@@ -1,0 +1,133 @@
+<!-- <p>view-student works!</p> -->
+<cdk-virtual-scroll-viewport itemSize="50" class="example-viewport">
+<mat-tab-group>
+  <mat-tab label="View All Students">
+    <p></p>
+    <div *ngIf="showTable">
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+          <!-- Start -  Patient Registration Number-->
+                  <ng-container matColumnDef="studentID" sticky>
+                      <th mat-header-cell *matHeaderCellDef>Student ID </th>
+                      <td mat-cell *matCellDef="let element">ST/{{element.StudentID}}</td>
+                  </ng-container>
+          <!-- End -  Patient Registration Number-->
+
+          <!-- Start -  Patient First Name Column -->
+                  <ng-container matColumnDef="StudentName" >
+                      <th mat-header-cell *matHeaderCellDef>Student Name </th>
+                      <td mat-cell *matCellDef="let element"> {{element.StudentName}} </td>
+                  </ng-container>
+          <!-- End -  Patient First Name Column -->
+
+          <!-- Start -  Patient Last Name Column -->
+                  <ng-container matColumnDef="gender">
+                      <th mat-header-cell *matHeaderCellDef>Gender </th>
+                      <td mat-cell *matCellDef="let element"> {{element.gender}} </td>
+                  </ng-container>
+          <!-- End -  Patient Last Name Column -->
+
+          <!-- Start -  Patient Gender Column -->
+                  <!-- <ng-container matColumnDef="DoB">
+                      <th style="width:80px"mat-header-cell *matHeaderCellDef >DoB </th>
+                      <td style="width:80px"mat-cell *matCellDef="let element"> {{element.DoB}} </td>
+                  </ng-container> -->
+          <!-- End -  Patient Gender Column -->
+          <!-- Start -  Patient Address Column -->
+          <ng-container matColumnDef="PostalAddress">
+              <th class="address"mat-header-cell *matHeaderCellDef >Postal Address </th>
+              <td class="address"mat-cell *matCellDef="let element"> {{element.PostalAddress}} </td>
+          </ng-container>
+          <!-- End -  Patient Address Column -->
+          <!-- Start -  Patient City Column -->
+          <ng-container matColumnDef="Major">
+              <th style="width:100px" mat-header-cell *matHeaderCellDef>Major </th>
+              <td style="width:100px" mat-cell *matCellDef="let element"> {{element.Major}} </td>
+          </ng-container>
+          <!-- End -  Patient City Column -->
+
+          <!-- Start -  Patient District Column -->
+          <ng-container matColumnDef="Email">
+              <th style="width:100px" mat-header-cell *matHeaderCellDef>Email </th>
+              <td style="width:100px" mat-cell *matCellDef="let element"> {{element.Email}} </td>
+          </ng-container>
+          <!-- End -  Patient District Column -->
+                  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      </div>
+
+  </mat-tab>
+  <mat-tab label="View Student By ID">
+    <p></p>
+    <div class="border border-secondary divDoctor">
+      <p class="font-weight-bold">Find Student</p>
+          <div class="form-group row">
+              <label for="searchBox" class="col-sm-4 col-form-label">Enter Student Number</label>
+              <div class="col-sm-5 input-group">
+                  <div class="input-group-prepend">
+                      <span class="input-group-text col" id="basic-addon3">ST/</span>
+                    </div>
+                <input  #searchBox type="number" class="form-control" id="searchBox" placeholder="Enter Registration No ">
+              </div>
+              <button (click)="getStudentByID(searchBox.value)" type="button" class="btn btn-outline-success">Search</button>
+          </div>
+    </div>
+
+    <div *ngIf="showTable">
+      <table mat-table [dataSource]="data_source_get_by_id" class="mat-elevation-z8">
+          <!-- Start -  Patient Registration Number-->
+                  <ng-container matColumnDef="studentID" sticky>
+                      <th mat-header-cell *matHeaderCellDef>Student ID </th>
+                      <td mat-cell *matCellDef="let element">ST/{{element.StudentID}}</td>
+                  </ng-container>
+          <!-- End -  Patient Registration Number-->
+
+          <!-- Start -  Patient First Name Column -->
+                  <ng-container matColumnDef="StudentName" >
+                      <th mat-header-cell *matHeaderCellDef>Student Name </th>
+                      <td mat-cell *matCellDef="let element"> {{element.StudentName}} </td>
+                  </ng-container>
+          <!-- End -  Patient First Name Column -->
+
+          <!-- Start -  Patient Last Name Column -->
+                  <ng-container matColumnDef="gender">
+                      <th mat-header-cell *matHeaderCellDef>Gender </th>
+                      <td mat-cell *matCellDef="let element"> {{element.gender}} </td>
+                  </ng-container>
+          <!-- End -  Patient Last Name Column -->
+
+          <!-- Start -  Patient Gender Column -->
+                  <!-- <ng-container matColumnDef="DoB">
+                      <th style="width:80px"mat-header-cell *matHeaderCellDef >DoB </th>
+                      <td style="width:80px"mat-cell *matCellDef="let element"> {{element.DoB}} </td>
+                  </ng-container> -->
+          <!-- End -  Patient Gender Column -->
+          <!-- Start -  Patient Address Column -->
+          <ng-container matColumnDef="PostalAddress">
+              <th class="address"mat-header-cell *matHeaderCellDef >Postal Address </th>
+              <td class="address"mat-cell *matCellDef="let element"> {{element.PostalAddress}} </td>
+          </ng-container>
+          <!-- End -  Patient Address Column -->
+          <!-- Start -  Patient City Column -->
+          <ng-container matColumnDef="Major">
+              <th style="width:100px" mat-header-cell *matHeaderCellDef>Major </th>
+              <td style="width:100px" mat-cell *matCellDef="let element"> {{element.Major}} </td>
+          </ng-container>
+          <!-- End -  Patient City Column -->
+
+          <!-- Start -  Patient District Column -->
+          <ng-container matColumnDef="Email">
+              <th style="width:100px" mat-header-cell *matHeaderCellDef>Email </th>
+              <td style="width:100px" mat-cell *matCellDef="let element"> {{element.Email}} </td>
+          </ng-container>
+          <!-- End -  Patient District Column -->
+                  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      </div>
+
+  </mat-tab>
+
+</mat-tab-group>
+
+</cdk-virtual-scroll-viewport>
