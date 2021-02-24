@@ -29,7 +29,7 @@ export class ViewStaffComponent implements OnInit {
   }
 
   getStaffByID(id:any){
-    this.apiService.getOneStaff().subscribe(result => {
+    this.apiService.getOneStaff(id).subscribe(result => {
       console.log(result.recordset);
       this.data_source_get_by_id = result.recordset;
     })

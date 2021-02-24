@@ -14,9 +14,9 @@ export class ApiHttpService {
   }
 
 
-  getOneStudent(){
+  getOneStudent(id:any){
     console.log("This is getOneStudent()");
-    return this.http.get<{ recordset:any}>("http://52.151.216.129/students");
+    return this.http.get<{ recordset:any}>("http://52.151.216.129/students/"+id);
   }
 
   getAllStaffDetails(){
@@ -25,9 +25,9 @@ export class ApiHttpService {
   }
 
 
-  getOneStaff(){
+  getOneStaff(id){
     console.log("This is getOneStaff()");
-    return this.http.get<{ recordset:any}>("http://52.151.216.129/students");
+    return this.http.get<{ recordset:any}>("http://52.151.216.129/staff/"+id);
   }
 
 }

@@ -35,7 +35,7 @@ export class ViewStudentComponent implements OnInit {
   }
 
   getStudentByID(id:any){
-    this.apiService.getOneStudent().subscribe(result => {
+    this.apiService.getOneStudent(id).subscribe(result => {
       console.log(result.recordset);
       this.data_source_get_by_id = result.recordset;
     })
